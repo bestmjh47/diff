@@ -268,7 +268,7 @@ diff -urN caf/arch/arm/mach-msm/ImmVibeSPI.c orig/arch/arm/mach-msm/ImmVibeSPI.c
 +
 +/* Variable defined to allow for tuning of the handset. */
 +
-+// ÇöÀç´Â Áö¿øµÇÁö ¾Ê´Â lib 
++// í˜„ì¬ëŠ” ì§€ì›ë˜ì§€ ì•ŠëŠ” lib 
 +#define	VIBE_FALSE false
 +#define VIBE_TRUE	true
 +
@@ -614,7 +614,7 @@ diff -urN caf/arch/arm/mach-msm/ImmVibeSPI.c orig/arch/arm/mach-msm/ImmVibeSPI.c
 +	}
 +	else
 +	{
-+		/*  immersion ¿¡¼­  ¿À´Â  nForce °ªÀº   O7  motor ÀÇ °æ¿ì ... -127 ~ +127   : O6 °°Àº  linear  motor ´Â  °¡´ÉÇÏÁö¸¸.... O7 Àº  À½¼ö..==0  ~  127  */	
++		/*  immersion ì—ì„œ  ì˜¤ëŠ”  nForce ê°’ì€   O7  motor ì˜ ê²½ìš° ... -127 ~ +127   : O6 ê°™ì€  linear  motor ëŠ”  ê°€ëŠ¥í•˜ì§€ë§Œ.... O7 ì€  ìŒìˆ˜..==0  ~  127  */	
 +		nForce = nForce - 61;
 +		g_nForce_32 = nForce*4;
 +
@@ -6104,7 +6104,7 @@ diff -urN caf/drivers/char/dmb_fci/dmbdrv_kttech.c orig/drivers/char/dmb_fci/dmb
 +//  	BBM_WRITE(NULL, BBM_COM_INT_ENABLE, 0); // kuzuri.11.25
 +
 +//2012.07.06
-+//  ÁÖÆÄ¼ö ¼³Á¤ ÈÄ ÀÎÅÍ·´Æ® enable ÇÏµµ·Ï ¼öÁ¤ 
++//  ì£¼íŒŒìˆ˜ ì„¤ì • í›„ ì¸í„°ëŸ½íŠ¸ enable í•˜ë„ë¡ ìˆ˜ì • 
 +//	BBM_WORD_WRITE(NULL, BBM_BUF_INT, 0x01ff); 
 +
 +	if(BBM_TUNER_SET_FREQ(NULL, ulFrequency)) {
@@ -6116,8 +6116,8 @@ diff -urN caf/drivers/char/dmb_fci/dmbdrv_kttech.c orig/drivers/char/dmb_fci/dmb
 +	} 
 +
 +//2012.07.06
-+//BBM_TUNER_SET_FREQ È£Ãâ Àü¿¡ ÀÎÅÍ·´Æ®¸¦ enableÇÏ¸é °£ÇæÀûÀ¸·Î ÀÌÀü ÁÖÆÄ¼ö °á°ú°¡ ÀÎÅÍ·´Æ®·Î ¹ß»ıÇÏ¿© 
-+//ÁÖÆÄ¼ö ¼³Á¤ ÈÄ ÀÎÅÍ·´Æ® enable ÇÏµµ·Ï ¼öÁ¤ 
++//BBM_TUNER_SET_FREQ í˜¸ì¶œ ì „ì— ì¸í„°ëŸ½íŠ¸ë¥¼ enableí•˜ë©´ ê°„í—ì ìœ¼ë¡œ ì´ì „ ì£¼íŒŒìˆ˜ ê²°ê³¼ê°€ ì¸í„°ëŸ½íŠ¸ë¡œ ë°œìƒí•˜ì—¬ 
++//ì£¼íŒŒìˆ˜ ì„¤ì • í›„ ì¸í„°ëŸ½íŠ¸ enable í•˜ë„ë¡ ìˆ˜ì • 
 +	BBM_WORD_WRITE(NULL, BBM_BUF_INT, 0x01ff); 
 +
 +	if(BBM_SCAN_STATUS(NULL)) {
@@ -6858,7 +6858,7 @@ diff -urN caf/drivers/char/dmb_fci/dmbdrv_kttech.c orig/drivers/char/dmb_fci/dmb
 +        dmb_kthread = kthread_run(dmb_thread, (void*)hInit, "dmb_thread");
 +      }
 +      #endif
-+	  //2011.11.28 vincent »èÁ¦ ÇÊ¿ä
++	  //2011.11.28 vincent ì‚­ì œ í•„ìš”
 +      //msleep(150); // 2011.06.28_temp
 +
 +
@@ -9104,7 +9104,7 @@ diff -urN caf/drivers/char/dmb_fci/fc8050_isr.c orig/drivers/char/dmb_fci/fc8050
 +  int mfInt_one = 0;
 +
 +  //2011.11.18 - FCI Vincent, External Interrupt Disable
-+  //bbm_write(hDevice, BBM_COM_INT_ENABLE, 0); // kuzuri del 2011.11.21 - È­¸é ¸ØÃã Çö»ó(SPI.error) ¹ß»ı!!!
++  //bbm_write(hDevice, BBM_COM_INT_ENABLE, 0); // kuzuri del 2011.11.21 - í™”ë©´ ë©ˆì¶¤ í˜„ìƒ(SPI.error) ë°œìƒ!!!
 +  ret_val = bbm_read(hDevice, BBM_COM_INT_STATUS, &extIntStatus);
 +  bbm_write(hDevice, BBM_COM_INT_STATUS, extIntStatus);
 +  bbm_write(hDevice, BBM_COM_INT_STATUS, 0x00);
@@ -9126,7 +9126,7 @@ diff -urN caf/drivers/char/dmb_fci/fc8050_isr.c orig/drivers/char/dmb_fci/fc8050
 +      if(size-1)
 +      {
 +        ret_val = bbm_data(hDevice, BBM_COM_FIC_DATA, &ficBuffer[0], size);
-+        // kuzuri 2011.12.02 - bbm_data fail ÀÏ °æ¿ì, ¾Æ·¡ FicCallback ¿¡¼­ Kernel panic ¹ß»ıÇÔ. extIntStatus=1, mfIntStatus = 0x100 ÀÎ °æ¿ì ¹®Á¦µÊ.
++        // kuzuri 2011.12.02 - bbm_data fail ì¼ ê²½ìš°, ì•„ë˜ FicCallback ì—ì„œ Kernel panic ë°œìƒí•¨. extIntStatus=1, mfIntStatus = 0x100 ì¸ ê²½ìš° ë¬¸ì œë¨.
 +        if ( ret_val!=0 )
 +        {
 +          DEVLOG(KERN_ERR "Error_____ FC8050_ISR()--- bbm_data read FAIL.. clear isr.\n");
@@ -9135,7 +9135,7 @@ diff -urN caf/drivers/char/dmb_fci/fc8050_isr.c orig/drivers/char/dmb_fci/fc8050
 +        else
 +        {
 +          if(pFicCallback) 
-+            (*pFicCallback)(hDevice, &ficBuffer[2], size);  // kuzuri 2011.12.02 - spi_readburst ÇÔ¼ö ¼öÁ¤.
++            (*pFicCallback)(hDevice, &ficBuffer[2], size);  // kuzuri 2011.12.02 - spi_readburst í•¨ìˆ˜ ìˆ˜ì •.
 +            //(*pFicCallback)(hDevice, &ficBuffer[4], size);
 +        }
 +      } 
@@ -9183,7 +9183,7 @@ diff -urN caf/drivers/char/dmb_fci/fc8050_isr.c orig/drivers/char/dmb_fci/fc8050
 +            CHECK_RET(3)
 +
 +            if(pMscCallback)
-+              (*pMscCallback)(hDevice, subChId, &mscBuffer[2], size);  // kuzuri 2011.12.02 - spi_readburst ÇÔ¼ö ¼öÁ¤.
++              (*pMscCallback)(hDevice, subChId, &mscBuffer[2], size);  // kuzuri 2011.12.02 - spi_readburst í•¨ìˆ˜ ìˆ˜ì •.
 +              //(*pMscCallback)(hDevice, subChId, &mscBuffer[4], size);
 +          }
 +        }
@@ -9219,7 +9219,7 @@ diff -urN caf/drivers/char/dmb_fci/fc8050_isr.c orig/drivers/char/dmb_fci/fc8050
 +	}
 +#endif
 +	//2011.11.18 - FCI Vincent External Interrupt Enable	
-+	//bbm_write(hDevice, BBM_COM_INT_ENABLE, BBM_MF_INT);  // kuzuri del 2011.11.21 - È­¸é ¸ØÃã Çö»ó(SPI.error) ¹ß»ı!!!
++	//bbm_write(hDevice, BBM_COM_INT_ENABLE, BBM_MF_INT);  // kuzuri del 2011.11.21 - í™”ë©´ ë©ˆì¶¤ í˜„ìƒ(SPI.error) ë°œìƒ!!!
 +}
 +
 diff -urN caf/drivers/char/dmb_fci/fc8050_isr.h orig/drivers/char/dmb_fci/fc8050_isr.h
@@ -23644,9 +23644,9 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater.h orig/
 +++ orig/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater.h	2015-09-08 23:48:29.187172429 +0900
 @@ -0,0 +1,47 @@
 +/*
-+ * MMS100A Config UpdaterÀÇ public Çì´õÀÔ´Ï´Ù.
-+ * !!ÁÖÀÇ!!
-+ * ³»¿ëÀ» ¼öÁ¤ÇÏ½Ã¸é ¾ÈµË´Ï´Ù.
++ * MMS100A Config Updaterì˜ public í—¤ë”ì…ë‹ˆë‹¤.
++ * !!ì£¼ì˜!!
++ * ë‚´ìš©ì„ ìˆ˜ì •í•˜ì‹œë©´ ì•ˆë©ë‹ˆë‹¤.
 + */
 +#ifndef __MMS100A_CONFIG_UPDATER_H__
 +#define __MMS100A_CONFIG_UPDATER_H__
@@ -23695,43 +23695,43 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_Customi
 +++ orig/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_Customize.c	2015-09-08 23:48:29.187172429 +0900
 @@ -0,0 +1,75 @@
 +/*
-+ * MMS100A Config Updater¸¦ customizeÇÏ±â À§ÇÑ ¼Ò½ºÀÔ´Ï´Ù.
-+ * Æ÷ÆÃÀ» À§ÇØ ¼öÁ¤ÇÏ¼Å¾ß ÇÏ´Â ¼Ò½ºÀÔ´Ï´Ù.
++ * MMS100A Config Updaterë¥¼ customizeí•˜ê¸° ìœ„í•œ ì†ŒìŠ¤ì…ë‹ˆë‹¤.
++ * í¬íŒ…ì„ ìœ„í•´ ìˆ˜ì •í•˜ì…”ì•¼ í•˜ëŠ” ì†ŒìŠ¤ì…ë‹ˆë‹¤.
 + */
 +#include "MMS100A_Config_Updater_Customize.h"
 +
 +/*
-+ *  TODO: Åë½Å¿¡ »ç¿ëÇÏ´Â slave address¸¦ ±â·ÏÇØ ÁÖ¼¼¿ä.
-+ * !! ÁÖÀÇ¸¦ ºÎÅ¹µå¸³´Ï´Ù !!
-+ * Config ½ÇÆĞ ½Ã »ç¿ëµÇ´Â default slave address´Â 0x48 ÀÔ´Ï´Ù.
-+ * ÇØ´ç slave address¸¦ »ç¿ëÇÏ´Â I2C slave device°¡ ¾ø´ÂÁö È®ÀÎÇØ ÁÖ½Ã°í,
-+ * ¸¸ÀÏ ÀÖ´Ù¸é MMM100A¸¦ ´Ù¿î·Îµå ÇÒ ¶§´Â ÇØ´ç slave device¸¦ disable ½ÃÄÑ ÁÖ½Ê½Ã¿À.
++ *  TODO: í†µì‹ ì— ì‚¬ìš©í•˜ëŠ” slave addressë¥¼ ê¸°ë¡í•´ ì£¼ì„¸ìš”.
++ * !! ì£¼ì˜ë¥¼ ë¶€íƒë“œë¦½ë‹ˆë‹¤ !!
++ * Config ì‹¤íŒ¨ ì‹œ ì‚¬ìš©ë˜ëŠ” default slave addressëŠ” 0x48 ì…ë‹ˆë‹¤.
++ * í•´ë‹¹ slave addressë¥¼ ì‚¬ìš©í•˜ëŠ” I2C slave deviceê°€ ì—†ëŠ”ì§€ í™•ì¸í•´ ì£¼ì‹œê³ ,
++ * ë§Œì¼ ìˆë‹¤ë©´ MMM100Aë¥¼ ë‹¤ìš´ë¡œë“œ í•  ë•ŒëŠ” í•´ë‹¹ slave deviceë¥¼ disable ì‹œì¼œ ì£¼ì‹­ì‹œì˜¤.
 + */
 +const unsigned char mfs_i2c_slave_addr = 0x48;
 +
 +/*
-+ * TODO: .mbin fileÀÇ °æ·Î¸¦ ¼³Á¤ÇØ ÁÖ¼¼¿ä.
-+ * ¸¶Áö¸· °æ·Î Ç¥½Ã¹®ÀÚ(e.g. slash)¸¦ ÇÔ²² ÀÔ·ÂÇØ ÁÖ¼¼¿ä.
++ * TODO: .mbin fileì˜ ê²½ë¡œë¥¼ ì„¤ì •í•´ ì£¼ì„¸ìš”.
++ * ë§ˆì§€ë§‰ ê²½ë¡œ í‘œì‹œë¬¸ì(e.g. slash)ë¥¼ í•¨ê»˜ ì…ë ¥í•´ ì£¼ì„¸ìš”.
 + */
 +char* mfs_mbin_path = "./";
 +
 +/*
-+ * TODO: .mbinÀ» Á¦¿ÜÇÑ °¢sectionÀÇ filenameÀ» ¼³Á¤ÇØ ÁÖ¼¼¿ä.
++ * TODO: .mbinì„ ì œì™¸í•œ ê°sectionì˜ filenameì„ ì„¤ì •í•´ ì£¼ì„¸ìš”.
 + */
 +
 +char section_filename[MFS_SECTION_][255] =
 +{ "BOOT", "CORE", "PRIV", "PUBL" };
 +
-+/*ÇöÀç settingµÈ slave address¸¦ ¾Ë°í ½ÍÀ» ¶§ ÂüÁ¶ÇÏ¼¼¿ä.*/
++/*í˜„ì¬ settingëœ slave addressë¥¼ ì•Œê³  ì‹¶ì„ ë•Œ ì°¸ì¡°í•˜ì„¸ìš”.*/
 +uint8_t mfs_slave_addr;
 +
 +mfs_bool_t MFS_I2C_set_slave_addr(unsigned char _slave_addr)
 +{
 +//namjja : change download addr
-+//	mfs_slave_addr = _slave_addr << 1; /*¼öÁ¤ÇÏÁö ¸¶½Ê½Ã¿À.*/
-+	mfs_slave_addr = _slave_addr; /*¼öÁ¤ÇÏÁö ¸¶½Ê½Ã¿À.*/
++//	mfs_slave_addr = _slave_addr << 1; /*ìˆ˜ì •í•˜ì§€ ë§ˆì‹­ì‹œì˜¤.*/
++	mfs_slave_addr = _slave_addr; /*ìˆ˜ì •í•˜ì§€ ë§ˆì‹­ì‹œì˜¤.*/
 +
-+	/* TODO: I2C slave address¸¦ ¼ÂÆÃÇØ ÁÖ¼¼¿ä. */
++	/* TODO: I2C slave addressë¥¼ ì…‹íŒ…í•´ ì£¼ì„¸ìš”. */
 +
 +	return MFS_TRUE;
 +}
@@ -23739,7 +23739,7 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_Customi
 +mfs_bool_t MFS_I2C_read_with_addr(unsigned char* _read_buf, unsigned char _addr,
 +		int _length)
 +{
-+	/* TODO: I2C·Î 1 byte address¸¦ ¾´ ÈÄ _length °¹¼ö¸¸Å­ ÀĞ¾î _read_buf¿¡ Ã¤¿ö ÁÖ¼¼¿ä. */
++	/* TODO: I2Cë¡œ 1 byte addressë¥¼ ì“´ í›„ _length ê°¯ìˆ˜ë§Œí¼ ì½ì–´ _read_bufì— ì±„ì›Œ ì£¼ì„¸ìš”. */
 +	if (!melfas_write(mfs_slave_addr, &_addr, 1))
 +		return MFS_FALSE;
 +	if (!melfas_read(mfs_slave_addr, _read_buf, _length))
@@ -23752,9 +23752,9 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_Customi
 +mfs_bool_t MFS_I2C_write(unsigned char* _write_buf, int _length)
 +{
 +	/*
-+	 * TODO: I2C·Î _write_bufÀÇ ³»¿ëÀ» _length °¹¼ö¸¸Å­ ½á ÁÖ¼¼¿ä.
-+	 * address¸¦ ¸í½ÃÇØ¾ß ÇÏ´Â ÀÎÅÍÆäÀÌ½ºÀÇ °æ¿ì, _write_buf[0]ÀÌ address°¡ µÇ°í
-+	 * _write_buf+1ºÎÅÍ _length-1°³¸¦ ½á ÁÖ½Ã¸é µË´Ï´Ù.
++	 * TODO: I2Cë¡œ _write_bufì˜ ë‚´ìš©ì„ _length ê°¯ìˆ˜ë§Œí¼ ì¨ ì£¼ì„¸ìš”.
++	 * addressë¥¼ ëª…ì‹œí•´ì•¼ í•˜ëŠ” ì¸í„°í˜ì´ìŠ¤ì˜ ê²½ìš°, _write_buf[0]ì´ addressê°€ ë˜ê³ 
++	 * _write_buf+1ë¶€í„° _length-1ê°œë¥¼ ì¨ ì£¼ì‹œë©´ ë©ë‹ˆë‹¤.
 +	 */
 +	if (!melfas_write(mfs_slave_addr, _write_buf, _length))
 +		return MFS_FALSE;
@@ -23774,16 +23774,16 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_Customi
 +++ orig/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_Customize.h	2015-09-08 23:48:29.187172429 +0900
 @@ -0,0 +1,53 @@
 +/*
-+ * MMS100A Config Updater¸¦ customizeÇÏ±â À§ÇÑ Çì´õÀÔ´Ï´Ù.
-+ * Æ÷ÆÃÀ» À§ÇØ ¼öÁ¤ÇÏ¼Å¾ß ÇÏ´Â Çì´õÀÔ´Ï´Ù.
++ * MMS100A Config Updaterë¥¼ customizeí•˜ê¸° ìœ„í•œ í—¤ë”ì…ë‹ˆë‹¤.
++ * í¬íŒ…ì„ ìœ„í•´ ìˆ˜ì •í•˜ì…”ì•¼ í•˜ëŠ” í—¤ë”ì…ë‹ˆë‹¤.
 + */
 +#ifndef __MMS100A_CONFIG_UPDATER_CUSTOMIZE_H__
 +#define __MMS100A_CONFIG_UPDATER_CUSTOMIZE_H__
 +
 +/*
-+ * TODO: ÇÊ¿äÇÑ header ÆÄÀÏÀ» includeÇØ ÁÖ¼¼¿ä.
-+ * ÇÊ¿äÇÑ ÀÎÅÍÆäÀÌ½º´Â ¾Æ·¡¿Í °°½À´Ï´Ù.
-+ * memset, malloc, free, strcmp, strstr, µğ¹ö±× ¸Ş¼¼Áö¸¦ À§ÇÑ ÇÔ¼ö µî.
++ * TODO: í•„ìš”í•œ header íŒŒì¼ì„ includeí•´ ì£¼ì„¸ìš”.
++ * í•„ìš”í•œ ì¸í„°í˜ì´ìŠ¤ëŠ” ì•„ë˜ì™€ ê°™ìŠµë‹ˆë‹¤.
++ * memset, malloc, free, strcmp, strstr, ë””ë²„ê·¸ ë©”ì„¸ì§€ë¥¼ ìœ„í•œ í•¨ìˆ˜ ë“±.
 + */
 +#if 0
 +#include <stdio.h>
@@ -23805,8 +23805,8 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_Customi
 +//#include "PUBL.h"
 +
 +/*
-+ * Boolean °ü·Ã type ¹× define.
-+ * ±×´ë·Î µÎ¼Åµµ µÇ°í, system¿¡ ¸Â°Ô °íÃÄ ÁÖ¼Åµµ µË´Ï´Ù.
++ * Boolean ê´€ë ¨ type ë° define.
++ * ê·¸ëŒ€ë¡œ ë‘ì…”ë„ ë˜ê³ , systemì— ë§ê²Œ ê³ ì³ ì£¼ì…”ë„ ë©ë‹ˆë‹¤.
 + */
 +typedef int mfs_bool_t;
 +#define MFS_TRUE		(0==0)
@@ -23831,9 +23831,9 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_V02.c o
 +++ orig/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_V02.c	2015-09-08 23:48:29.187172429 +0900
 @@ -0,0 +1,581 @@
 +/*
-+ * MMS100A Config UpdaterÀÇ ¾Ë°í¸®µëÀÌ ±¸ÇöµÈ ºÎºĞÀÔ´Ï´Ù.
-+ * !!ÁÖÀÇ!!
-+ * ³»¿ëÀ» ¼öÁ¤ÇÏ½Ã¸é ¾ÈµË´Ï´Ù.
++ * MMS100A Config Updaterì˜ ì•Œê³ ë¦¬ë“¬ì´ êµ¬í˜„ëœ ë¶€ë¶„ì…ë‹ˆë‹¤.
++ * !!ì£¼ì˜!!
++ * ë‚´ìš©ì„ ìˆ˜ì •í•˜ì‹œë©´ ì•ˆë©ë‹ˆë‹¤.
 + */
 +#include "MMS100A_Config_Updater_Customize.h"
 +#include "BOOT_120529_v28.c"
@@ -23944,10 +23944,10 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_V02.c o
 +
 +	buf =  kmalloc(PACKET_, GFP_KERNEL);
 +
-+	/*Config ¸ğµå ÁøÀÔ Àü¿¡´Â ¼³Á¤µÈ slave address¸¦ »ç¿ë.*/
++	/*Config ëª¨ë“œ ì§„ì… ì „ì—ëŠ” ì„¤ì •ëœ slave addressë¥¼ ì‚¬ìš©.*/
 +	MFS_I2C_set_slave_addr(mfs_i2c_slave_addr);
 +
-+	/* I2C Åë½ÅÀ» ½ÃµµÇÏ¿© ½ÇÆĞÇÏ¸é config recovery mode·Î º¸¾Æ slave address¸¦ default value·Î º¯°æ */
++	/* I2C í†µì‹ ì„ ì‹œë„í•˜ì—¬ ì‹¤íŒ¨í•˜ë©´ config recovery modeë¡œ ë³´ì•„ slave addressë¥¼ default valueë¡œ ë³€ê²½ */
 +	if (is_config_recovery_mode())
 +		MFS_I2C_set_slave_addr(MFS_DEFAULT_SLAVE_ADDR);
 +	//old firmware version check
@@ -23971,7 +23971,7 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_V02.c o
 +	if ((ret = enter_ISC_mode()) && ret != MRET_SUCCESS)
 +		goto MCSDL_DOWNLOAD_FINISH;
 +
-+	/*Config ¸ğµå ÁøÀÔ ÈÄ slave address¸¦ default value·Î º¯°æ.*/
++	/*Config ëª¨ë“œ ì§„ì… í›„ slave addressë¥¼ default valueë¡œ ë³€ê²½.*/
 +	MFS_I2C_set_slave_addr(MFS_DEFAULT_SLAVE_ADDR);
 +
 +	if ((ret = enter_config_update_mode()) && ret != MRET_SUCCESS)
@@ -24000,7 +24000,7 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_V02.c o
 +
 +	MFS_I2C_set_slave_addr(mfs_i2c_slave_addr);
 +
-+	// Reboot ÇØ¾ß ÇÕ´Ï´Ù!!!
++	// Reboot í•´ì•¼ í•©ë‹ˆë‹¤!!!
 +	melfas_power(0);
 +	MFS_ms_delay(1000);
 +	melfas_power(1);
@@ -24011,7 +24011,7 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_V02.c o
 +{
 +	unsigned char rb;
 +	if (!MFS_I2C_read_with_addr(&rb, ISC_ADDR_VERSION, 1))
-+		return MFS_TRUE; //Fail ½Ã recovery mode·Î ÀÎ½Ä.
++		return MFS_TRUE; //Fail ì‹œ recovery modeë¡œ ì¸ì‹.
 +	return MFS_FALSE;
 +}
 +
@@ -24034,7 +24034,7 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_V02.c o
 +{
 +	int i;
 +	eMFSRet_t ret;
-+	//TODO: ¼³Á¤µÈ I2C slave address·Î versionÀ» ÀĞ¾î¼­ Á¤»ó ´Ù¿î·Îµå ¿©ºÎ¸¦ È®ÀÎ!
++	//TODO: ì„¤ì •ëœ I2C slave addressë¡œ versionì„ ì½ì–´ì„œ ì •ìƒ ë‹¤ìš´ë¡œë“œ ì—¬ë¶€ë¥¼ í™•ì¸!
 +	MFS_I2C_set_slave_addr(mfs_i2c_slave_addr);
 +
 +	if ((ret = read_old_firm_info()) && ret != MRET_SUCCESS)
@@ -24235,7 +24235,7 @@ diff -urN caf/drivers/input/touchscreen/mms100_ts/MMS100A_Config_Updater_V02.c o
 +					break;
 +				}
 +			/*
-+			 * old infoÀÇ marker section ¿Ü¿¡ Ãß°¡µÈ marker sectionÀ» erase.
++			 * old infoì˜ marker section ì™¸ì— ì¶”ê°€ëœ marker sectionì„ erase.
 +			 */
 +			if (!same_addr)
 +			{
@@ -33542,7 +33542,7 @@ diff -urN caf/drivers/power/max17040_kttech.c orig/drivers/power/max17040_kttech
 + *
 + * RCOMP = 0xB700, FullSoc = 98.45, EmptySoc = 1.68, 18bit mode
 + *
-+ * ¾÷Ã¼¿¡¼­ Àü´Ş ¹ŞÀº ¹èÅÍ¸® ¸ğµ¨ °ªÀÌ 19BITÀÏ °æ¿ì Feature »èÁ¦
++ * ì—…ì²´ì—ì„œ ì „ë‹¬ ë°›ì€ ë°°í„°ë¦¬ ëª¨ë¸ ê°’ì´ 19BITì¼ ê²½ìš° Feature ì‚­ì œ
 +***************************************************************************/
 +//#define KTTECH_MAXIM_BATT_MODEL_18BIT 
 +
@@ -33714,7 +33714,7 @@ diff -urN caf/drivers/power/max17040_kttech.c orig/drivers/power/max17040_kttech
 +
 +static int max17040_need_to_update_rcomp(int batt_temp)
 +{
-+	#define UPDATE_CONDITION  30   // 3¡É
++	#define UPDATE_CONDITION  30   // 3â„ƒ
 +	#define INVALID_BATT_TEMP  -300
 +		
 +	static int latest_temp = 200;         // starting temperature
@@ -35710,7 +35710,7 @@ diff -urN caf/drivers/video/msm/mipi_dummy_video_hd_pt.c orig/drivers/video/msm/
 +	pinfo.mipi.hfp_power_stop = TRUE;
 +	pinfo.mipi.hbp_power_stop = TRUE;
 +	pinfo.mipi.hsa_power_stop = TRUE;
-+	pinfo.mipi.eof_bllp_power_stop = 0; //lcd ¶³¸² Çö»ó Á¦°Å 
++	pinfo.mipi.eof_bllp_power_stop = 0; //lcd ë–¨ë¦¼ í˜„ìƒ ì œê±° 
 +	pinfo.mipi.bllp_power_stop = 0;  /* Needed or else will have blank line at top of display */
 +	pinfo.mipi.traffic_mode = DSI_BURST_MODE;
 +	pinfo.mipi.dst_format = DSI_VIDEO_DST_FORMAT_RGB888;
@@ -36548,7 +36548,7 @@ diff -urN caf/drivers/video/msm/mipi_lg_l4500t_video_hd_pt.c orig/drivers/video/
 +	pinfo.mipi.hfp_power_stop = TRUE;
 +	pinfo.mipi.hbp_power_stop = TRUE;
 +	pinfo.mipi.hsa_power_stop = TRUE;	
-+	pinfo.mipi.eof_bllp_power_stop = 0; //lcd ¶³¸² Çö»ó Á¦°Å 
++	pinfo.mipi.eof_bllp_power_stop = 0; //lcd ë–¨ë¦¼ í˜„ìƒ ì œê±° 
 +	pinfo.mipi.bllp_power_stop = 0;  /* Needed or else will have blank line at top of display */
 +	pinfo.mipi.traffic_mode = DSI_BURST_MODE;
 +	
@@ -39606,7 +39606,7 @@ diff -urN caf/sound/soc/msm/msm8960.c orig/sound/soc/msm/msm8960.c
  #define JACK_US_EURO_SEL_GPIO 35
  
 +
-+#ifdef CONFIG_KTTECH_SOUND //CONFIG_KTTECH_SOUND_SPK_MSMGPIO - hw versionÃ€Â¸Â·Ã ÃƒÂ³Â¸Â®
++#ifdef CONFIG_KTTECH_SOUND //CONFIG_KTTECH_SOUND_SPK_MSMGPIO - hw versionì¨ì¨Œ ì¨€ì¨ì§°
 +#define SPK_PAMP_GPIO (52)
 +static int msm8960_ext_spk_configured;
 +#endif
